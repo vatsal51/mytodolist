@@ -15,6 +15,10 @@ img {
   max-width: 100%;
 }
 
+input {
+  padding: 15px 10px;
+  border-radius: 10px;
+}
 .App {
   text-align: center;
 }
@@ -27,11 +31,10 @@ img {
 }
 
 .lists {
-  width: 800px;
-
+  width: 600px;
   border: 1px solid #c6c6c6;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 20px;
   margin-bottom: 10px;
 }
 
@@ -39,7 +42,7 @@ img {
   display: flex;
   gap: 20px;
 }
-.lists .userName img{
+.lists .userName img {
   border-radius: 50%;
 }
 .lists .userName p {
@@ -50,6 +53,21 @@ img {
   justify-content: space-between;
 }
 
+.lists .details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lists .details div:nth-child(-n + 3) {
+  flex: 1 0 80px;
+  text-align: left;
+}
+.lists .details div:last-child {
+  flex: 1 0 auto;
+}
+.lists .details div:nth-child(4) {
+  text-align: left;
+}
 .lists ul {
   list-style-type: none;
   padding: 0;
@@ -60,6 +78,8 @@ img {
   align-self: center;
 }
 
-.lists .listAction, .lists .listEdit{
+.lists .listAction,
+.lists .listEdit {
   text-align: right;
+  align-self: flex-end;
 }
