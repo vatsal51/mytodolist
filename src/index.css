@@ -12,7 +12,6 @@ code {
     monospace;
 }
 img {
-  display: inline-block;
   max-width: 100%;
 }
 
@@ -40,7 +39,9 @@ img {
   display: flex;
   gap: 20px;
 }
-
+.lists .userName img{
+  border-radius: 50%;
+}
 .lists .userName p {
   align-self: center;
 }
@@ -56,4 +57,9 @@ img {
 
 .lists span {
   vertical-align: middle;
+  align-self: center;
+}
+
+.lists .listAction, .lists .listEdit{
+  text-align: right;
 }

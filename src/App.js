@@ -106,13 +106,7 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
                 user.gender
               )}
             </p>
-            <p>
-              Email: {isEditing ? (
-                <input type="text" name="email" value={editedUser.email} onChange={handleInputChange} />
-              ) : (
-                user.email
-              )}
-            </p>
+           
             <p>
               Country: {isEditing ? (
                 <input type="text" name="country" value={editedUser.country} onChange={handleInputChange} />
@@ -136,13 +130,13 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
         />
       ) : isEditing ? (
         <div className='listEdit'>
-          <span onClick={handleSaveClick}><img src={tick} alt="Tick Icon" /></span>
-          <span onClick={handleCancelClick}> <img src={closeIcon} alt="Close Icon" /></span>
+          <img onClick={handleSaveClick} src={tick} alt="Tick Icon" />
+           <img  onClick={handleCancelClick} src={closeIcon} alt="Close Icon" />
         </div>
       ) : (
-        <div>
-          <span onClick={handleDeleteClick}><img src={deleteIcon} alt="Delete Icon" /></span>
-          <span onClick={handleEditClick}><img src={edit} alt="Close Icon" /></span>
+        <div className='listAction'>
+         <img onClick={handleDeleteClick} src={deleteIcon} alt="Delete Icon" />
+          <img onClick={handleEditClick} src={edit} alt="Close Icon" />
          
         </div>
       )}
