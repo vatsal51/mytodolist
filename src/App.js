@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import jsonData from "./celebs.json";
 import ConfirmationDialog from "./ConfirmationDialog ";
 import closeIcon from "./cross-circle-svgrepo-com.svg";
@@ -6,6 +6,7 @@ import tick from "./tick.svg";
 import edit from "./edit.svg";
 import deleteIcon from "./delete.svg";
 import downArrow from "./down-arrow.svg";
+
 function calculateAge(dob) {
   const dobDate = new Date(dob);
   const currentDate = new Date();
@@ -28,6 +29,7 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
   const [originalUser] = useState({ ...user });
   const [isConfirmingDelete, setIsConfirmingDelete] = useState(false);
   const [isDetailsVisible, setisDetailsVisible] = useState(false);
+
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
@@ -89,10 +91,11 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
     actionButtons = (
       <div className="listAction">
         <img onClick={handleDeleteClick} src={deleteIcon} alt="Delete Icon" />
-        <img onClick={handleEditClick} src={edit} alt="Close Icon" />
+        <img onClick={handleEditClick} src={edit} alt="Edit Icon" />
       </div>
     );
   }
+
   return (
     <div className="lists">
       <div key={user.id}>
@@ -112,12 +115,12 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
               )}{" "}
             </p>
           </div>
-          <span
+          <img
+            src={downArrow}
             onClick={handleToggle}
             className={`arrow ${isDetailsVisible ? "up" : "down"}`}
-          >
-            <img src={downArrow} alt="down arrow"></img>
-          </span>
+            alt="down arrow"
+          ></img>
         </div>
       </div>
 
@@ -177,7 +180,6 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
             user.description
           )}
         </div>
-
         {actionButtons}
       </div>
     </div>
@@ -186,7 +188,7 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
 
 function App() {
   const [data, setData] = useState(jsonData);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const handleSave = (editedUser) => {
     const updatedData = data.map((user) =>
       user.id === editedUser.id ? editedUser : user
@@ -198,11 +200,27 @@ function App() {
     setData(data.filter((user) => user.id !== userId));
   };
 
+  // Filter the data based on the search term
+  const filteredData = data.filter((user) => {
+    const fullName = `${user.first} ${user.last}`.toLowerCase();
+    return fullName.includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div className="App">
-      <h1>User Information</h1>
+      <div className="headerWrapper">
+        <h1>User Information</h1>
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+      </div>
       <div className="container">
-        {data.map((user) => (
+        {filteredData.map((user) => (
           <DataListComponent
             key={user.id}
             user={user}
