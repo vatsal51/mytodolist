@@ -65,124 +65,121 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
 
   const handleToggle = () => {
     setisDetailsVisible(!isDetailsVisible);
-   if(isEditing) setIsEditing(!isEditing)
+    if (isEditing) setIsEditing(!isEditing);
   };
+
+  let actionButtons;
+
+  if (isConfirmingDelete) {
+    actionButtons = (
+      <ConfirmationDialog
+        message="Are you sure you want to delete?"
+        onConfirm={handleConfirmDelete}
+        onCancel={handleCancelDelete}
+      />
+    );
+  } else if (isEditing) {
+    actionButtons = (
+      <div className="listEdit">
+        <img onClick={handleSaveClick} src={tick} alt="Tick Icon" />
+        <img onClick={handleCancelClick} src={closeIcon} alt="Close Icon" />
+      </div>
+    );
+  } else {
+    actionButtons = (
+      <div className="listAction">
+        <img onClick={handleDeleteClick} src={deleteIcon} alt="Delete Icon" />
+        <img onClick={handleEditClick} src={edit} alt="Close Icon" />
+      </div>
+    );
+  }
   return (
     <div className="lists">
-      
-        <div key={user.id}>
-          <div className="userWrapper">
-            <div className="userName">
-              <img src={user.picture} alt={user.first} />{" "}
-              <p>
-                {isEditing ? (
-                  <input
-                    type="text"
-                    name="first"
-                    value={editedUser.first}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  user.first
-                )}{" "}
-              </p>
-            </div>
-            <span onClick={handleToggle} className={`arrow ${isDetailsVisible ? 'up' : 'down'}`}>
-              <img src={downArrow} alt="down arrow"></img>
-            </span>
+      <div key={user.id}>
+        <div className="userWrapper">
+          <div className="userName">
+            <img src={user.picture} alt={user.first} />{" "}
+            <p>
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="first"
+                  value={editedUser.first}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                user.first
+              )}{" "}
+            </p>
           </div>
+          <span
+            onClick={handleToggle}
+            className={`arrow ${isDetailsVisible ? "up" : "down"}`}
+          >
+            <img src={downArrow} alt="down arrow"></img>
+          </span>
         </div>
-      
-        <div
-  className={`details ${
-    isDetailsVisible ? 'visible' : ''
-  }`}
->
-  <div>
-    <p>Age:</p>{" "}
-    {isEditing ? (
-      <input
-        type="text"
-        name="dob"
-        value={editedUser.dob}
-        onChange={handleInputChange}
-      />
-    ) : (
-      calculateAge(user.dob)
-    )}
-  </div>
+      </div>
 
-  <div>
-    <p>Gender:</p>{" "}
-    {isEditing ? (
-      <input
-        type="text"
-        name="gender"
-        value={editedUser.gender}
-        onChange={handleInputChange}
-      />
-    ) : (
-      user.gender
-    )}
-  </div>
+      <div className={`details ${isDetailsVisible ? "visible" : ""}`}>
+        <div>
+          <p>Age:</p>{" "}
+          {isEditing ? (
+            <input
+              type="text"
+              name="dob"
+              value={editedUser.dob}
+              onChange={handleInputChange}
+            />
+          ) : (
+            calculateAge(user.dob)
+          )}
+        </div>
 
-  <div>
-    <p>Country:</p>{" "}
-    {isEditing ? (
-      <input
-        type="text"
-        name="country"
-        value={editedUser.country}
-        onChange={handleInputChange}
-      />
-    ) : (
-      user.country
-    )}
-  </div>
+        <div>
+          <p>Gender:</p>{" "}
+          {isEditing ? (
+            <input
+              type="text"
+              name="gender"
+              value={editedUser.gender}
+              onChange={handleInputChange}
+            />
+          ) : (
+            user.gender
+          )}
+        </div>
 
-  <div>
-    <p>Description:</p>{" "}
-    {isEditing ? (
-      <textarea
-        name="description"
-        value={editedUser.description}
-        onChange={handleInputChange}
-        rows={3}
-      />
-    ) : (
-      user.description
-    )}
-  </div>
+        <div>
+          <p>Country:</p>{" "}
+          {isEditing ? (
+            <input
+              type="text"
+              name="country"
+              value={editedUser.country}
+              onChange={handleInputChange}
+            />
+          ) : (
+            user.country
+          )}
+        </div>
 
-  {isConfirmingDelete ? (
-    <ConfirmationDialog
-      message="Are you sure you want to delete?"
-      onConfirm={handleConfirmDelete}
-      onCancel={handleCancelDelete}
-    />
-  ) : isEditing ? (
-    <div className="listEdit">
-      <img onClick={handleSaveClick} src={tick} alt="Tick Icon" />
-      <img
-        onClick={handleCancelClick}
-        src={closeIcon}
-        alt="Close Icon"
-      />
-    </div>
-  ) : (
-    <div className="listAction">
-      <img
-        onClick={handleDeleteClick}
-        src={deleteIcon}
-        alt="Delete Icon"
-      />
-      <img onClick={handleEditClick} src={edit} alt="Close Icon" />
-    </div>
-  )}
-</div>
+        <div>
+          <p>Description:</p>{" "}
+          {isEditing ? (
+            <textarea
+              name="description"
+              value={editedUser.description}
+              onChange={handleInputChange}
+              rows={4}
+            />
+          ) : (
+            user.description
+          )}
+        </div>
 
-        
-      
+        {actionButtons}
+      </div>
     </div>
   );
 };
