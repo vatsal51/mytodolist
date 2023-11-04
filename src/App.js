@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import jsonData from "./celebs.json";
 import ConfirmationDialog from "./ConfirmationDialog ";
 import closeIcon from "./cross-circle-svgrepo-com.svg";
