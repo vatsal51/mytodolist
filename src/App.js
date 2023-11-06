@@ -113,6 +113,16 @@ const DataListComponent = ({ user, onSave, onDelete }) => {
               ) : (
                 user.first
               )}{" "}
+              {isEditing ? (
+                <input
+                  type="text"
+                  name="last"
+                  value={editedUser.last}
+                  onChange={handleInputChange}
+                />
+              ) : (
+                user.last
+              )}
             </p>
           </div>
           <img
@@ -202,7 +212,7 @@ function App() {
 
   // Filter the data based on the search term
   const filteredData = data.filter((user) => {
-    const fullName = `${user.first}`.toLowerCase();
+    const fullName = `${user.first} ${user.last}`.toLowerCase();
     return fullName.includes(searchTerm.toLowerCase());
   });
 
