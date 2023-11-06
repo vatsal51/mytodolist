@@ -1,127 +1,28 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-h1 {
-  margin: 0;
-}
-img {
-  max-width: 100%;
-}
-
-input {
-  padding: 8px;
-  border-radius: 10px;
-}
-textarea {
-  width: 600px;
-  max-width: 600px;
-}
-.App {
-  text-align: center;
-}
-.headerWrapper {
-  background-color: #ffffff;
-  position: sticky;
-  top: 0;
-  padding: 15px;
-  filter: drop-shadow(0 2px 4px gray);
-  z-index: 2;
-}
-
-.headerWrapper .search-bar input {
-  width: 100%;
-  max-width: 650px;
-}
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px;
-}
-
-.lists {
-  max-width: 650px;
-  margin: 0 auto;
-  border: 1px solid #c6c6c6;
-  border-radius: 10px;
-  padding: 15px 20px;
-  margin-bottom: 10px;
-}
-
-.lists .userName {
-  display: flex;
-  gap: 20px;
-}
-.lists .userName img {
-  border-radius: 50%;
-}
-.lists .userName p {
-  align-self: center;
-}
-.lists .userWrapper {
-  display: flex;
-  justify-content: space-between;
-}
-.arrow {
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.arrow.down {
-  transform: rotate(0deg);
-}
-
-.arrow.up {
-  transform: rotate(180deg);
-}
-
-.lists .details {
-  display: flex;
-  flex-wrap: wrap;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
-}
-.visible {
-  max-height: 1000px !important;
-}
-
-.lists .details div:nth-child(-n + 3) {
-  flex: 1 0 80px;
-  text-align: left;
-}
-.lists .details div:last-child {
-  flex: 1 0 auto;
-  margin-top: 10px;
-}
-.lists .details div:nth-child(4) {
-  text-align: left;
-}
-.lists ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.lists span {
-  vertical-align: middle;
-  align-self: center;
-}
-
-.lists .listAction,
-.lists .listEdit {
-  text-align: right;
-  align-self: flex-end;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+code{font-family:source-code-pro,Menlo,Monaco,Consolas,"Courier New",monospace}
+h1{margin:0}
+img{max-width:100%;display:block}
+input{padding:8px;border-radius:10px}
+textarea{width:600px;max-width:600px}
+.App{text-align:center}
+.headerWrapper{background-color:#fff;position:sticky;top:0;padding:15px;filter:drop-shadow(0 2px 4px gray);z-index:2}
+.headerWrapper .search-bar input{width:100%;border: 1px solid #c6c6c6;max-width:650px;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0idy02IGgtNiI+DQogIDxwYXRoIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZD0iTTIxIDIxbC01LjE5Ny01LjE5N20wIDBBNy41IDcuNSAwIDEwNS4xOTYgNS4xOTZhNy41IDcuNSAwIDAwMTAuNjA3IDEwLjYwN3oiIC8+DQo8L3N2Zz4NCg==);background-position:7px 50%;padding:10px 10px 10px 30px;background-repeat:no-repeat;background-size:20px}
+.container{max-width:1200px;margin:0 auto;padding:15px}
+.lists{max-width:650px;margin:0 auto;border:1px solid #c6c6c6;border-radius:10px;padding:15px 20px;margin-bottom:10px;box-shadow:6px 6px 12px -12px}
+.lists .userName{display:flex;gap:20px}
+.lists .userName img{border-radius:50%}
+.lists .userName p{align-self:center}
+.lists .userWrapper{display:flex;justify-content:space-between}
+.lists .details{position:relative;display:flex;flex-wrap:wrap;max-height:0;overflow:hidden;transition:max-height .3s ease-in-out}
+.lists .details div p{color:#607d8b;}
+.lists .details>div:nth-child(-n+3){flex:1 0 80px;text-align:left}
+.lists .details>div:last-child{flex:1 0 auto;margin-top:10px}
+.lists .details>div:nth-child(4){flex:1 0 100%; text-align:left}
+.lists ul{list-style-type:none;padding:0;margin:0}
+.lists .listAction,.lists .listEdit{display: flex;justify-content: flex-end;}
+.lists .listAction img,.lists .listEdit img{cursor: pointer;margin-left: 15px;}
+.visible{max-height:1000px!important}
+.arrow{transition:transform .3s ease;cursor:pointer}
+.arrow.down{transform:rotate(0)}
+.arrow.up{transform:rotate(180deg)}

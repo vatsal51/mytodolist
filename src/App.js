@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import jsonData from "./celebs.json";
 import ConfirmationDialog from "./ConfirmationDialog ";
-import closeIcon from "./cross-circle-svgrepo-com.svg";
+import closeIcon from "./cross-circle.svg";
 import tick from "./tick.svg";
 import edit from "./edit.svg";
 import deleteIcon from "./delete.svg";
@@ -202,7 +202,7 @@ function App() {
 
   // Filter the data based on the search term
   const filteredData = data.filter((user) => {
-    const fullName = `${user.first} ${user.last}`.toLowerCase();
+    const fullName = `${user.first}`.toLowerCase();
     return fullName.includes(searchTerm.toLowerCase());
   });
 
@@ -214,6 +214,7 @@ function App() {
           <input
             type="text"
             placeholder="Search by name"
+            className="search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
